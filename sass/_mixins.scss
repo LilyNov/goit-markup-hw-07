@@ -5,33 +5,11 @@
   letter-spacing: $fls;
 }
 
-@mixin list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+@mixin tranzition($v) {
+  transition: $v 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@mixin container {
-  margin-left: auto;
-  margin-right: auto;
-  width: 1200px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-@mixin flex {
-  display: flex;
-  align-items: center;
-}
-
-@mixin list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-@mixin link {
-  text-decoration: none;
-  color: var(--primery-text-color);
-  cursor: pointer;
+@mixin bsize($w, $h) {
+  width: $w;
+  height: $h;
 }

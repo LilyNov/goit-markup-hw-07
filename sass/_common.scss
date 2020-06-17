@@ -5,16 +5,16 @@ body {
 }
 
 .page-header {
-  @include container;
+  @extend %container;
   display: flex;
   justify-content: space-between;
   background-color: $primary-white-color;
 }
 
 .main-nav {
-  @include flex;
+  @extend %flex;
   .logo-head {
-    @include link;
+    @extend %link;
     font-family: $font-logo;
     @include fontz(700, 26px, 1.19, 0.03em);
     text-decoration: none;
@@ -36,15 +36,61 @@ body {
 //навигация сайта
 
 .site-nav {
-  @include list;
+  @extend %list;
+  @extend %link;
   display: flex;
   margin-left: 85px;
+  .item:not(:last-child) {
+    margin-right: 50px;
+  }
+  .link.current {
+    color: $accent-text-color;
+    &::after {
+      opacity: 1;
+    }
+  }
+  .link {
+    position: relative;
+    display: block;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    @include fontz(500, 14px, 1, 0.02em);
+    color: $title-text-color;
+    @include tranzition(color);
+    &::after {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: 0;
+      display: block;
+      @include bsize(100%, 4px);
+      background-color: $accent-text-color;
+      border-radius: 4px;
+      opacity: 0;
+      @include tranzition(opacity);
+    }
+    &:hover {
+      color: $accent-text-color;
+      @include tranzition(color);
+    }
+    &:focus {
+      color: $accent-text-color;
+      @include tranzition(color);
+    }
+  }
 }
 
 .cont-nav {
   margin-left: auto;
-  @include flex;
+  @extend %flex;
   > .item.phone {
     margin-left: 30px;
+    .link {
+      display: inline-flex;
+      align-items: center;
+      @include fontz(500, 14px, 1.14, 00.02em);
+      color: $primery-text-color;
+      @include tranzition(color);
+    }
   }
 }
