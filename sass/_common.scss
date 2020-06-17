@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: $font-body;
+  color: $primery-text-color;
+}
+
+.page-header {
+  @include container;
+  display: flex;
+  justify-content: space-between;
+  background-color: $primary-white-color;
+}
+
+.main-nav {
+  @include flex;
+  .logo-head {
+    @include link;
+    font-family: $font-logo;
+    @include fontz(700, 26px, 1.19, 0.03em);
+    text-decoration: none;
+  }
+  .logo-foot {
+    margin-bottom: 10px;
+    @include fontz(700, 22px, 1.18, 00.03em);
+  }
+}
+
+.logo-web {
+  color: #2196f3;
+}
+
+.logo-nav {
+  color: #000000;
+}
+
+//навигация сайта
+
+.site-nav {
+  @include list;
+  display: flex;
+  margin-left: 85px;
+}
+
+.cont-nav {
+  margin-left: auto;
+  @include flex;
+  > .item.phone {
+    margin-left: 30px;
+  }
+}
