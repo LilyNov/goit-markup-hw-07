@@ -81,16 +81,118 @@ body {
 }
 
 .cont-nav {
+  @extend %list;
+  @extend %link;
   margin-left: auto;
   @extend %flex;
   > .item.phone {
     margin-left: 30px;
-    .link {
-      display: inline-flex;
-      align-items: center;
-      @include fontz(500, 14px, 1.14, 00.02em);
-      color: $primery-text-color;
+  }
+  .link {
+    display: inline-flex;
+    align-items: center;
+    @include fontz(500, 14px, 1.14, 00.02em);
+    color: $primery-text-color;
+    @include tranzition(color);
+  }
+  .mail-icon {
+    @include bsize(16px, 11px);
+    margin-right: 10px;
+    fill: currentColor;
+    cursor: pointer;
+  }
+  .phone-icon {
+    @include bsize(10px, 15px);
+    margin-right: 10px;
+    fill: currentColor;
+    cursor: pointer;
+  }
+}
+
+//Футер
+
+.page-footer {
+  @extend %container;
+  @extend %link;
+  min-height: 253px;
+  background-color: $foot-primery-color;
+  color: $primary-white-color;
+  b {
+    display: inline-block;
+    margin-bottom: 21px;
+    text-transform: uppercase;
+    @include fontz(400, 14px, 1.14, 0.03em);
+  }
+  .container.info {
+    @include flex-mix(flex, baseline, space-between);
+    padding-top: 48px;
+    padding-bottom: 28px;
+  }
+  .address {
+    @include fontz(400, 14px, 1.71, 0.03em);
+  }
+}
+
+.logo-foot {
+  @extend %link;
+  color: $primary-white-color;
+  &.link {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+}
+
+.address {
+  &.company {
+    margin-bottom: 9px;
+    font-family: inherit;
+    font-style: normal;
+  }
+  .link {
+    font-family: inherit;
+    font-style: normal;
+    @include fontz(400, 14px, 1.71, 0.03em);
+    &.mail {
+      display: inline-block;
+      margin-bottom: 9px;
+    }
+  }
+}
+
+//значки соцсетей
+
+.social {
+  .list {
+    display: flex;
+    justify-items: center;
+  }
+  .link {
+    @include flex-mix(flex, center, center);
+    @include bsize(44px, 44px);
+    color: $primary-white-color;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    @include tranzition(background-color);
+    @include tranzition(color);
+    &:hover,
+    &:focus {
+      color: $primary-white-color;
+      background-color: $accent-text-color;
+      @include tranzition(background-color);
       @include tranzition(color);
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+  }
+  &-icon {
+    fill: currentColor;
+  }
+}
+
+.foot-link .social {
+  .item {
+    margin-right: 10px;
+    &:nth-child(4n) {
+      margin-right: 0;
     }
   }
 }
