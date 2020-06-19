@@ -224,6 +224,7 @@ body {
     align-items: center;
     text-align: center;
     min-width: 200px;
+    min-height: 50px;
     border-radius: 4px;
     padding: 10px 32px;
     cursor: pointer;
@@ -233,7 +234,7 @@ body {
 
     text-decoration: none;
     @include fontz(700, 16px, 1.87, 0.06em);
-    outline: none;
+    border-color: transparent;
 
     &::after {
       content: "";
@@ -247,6 +248,57 @@ body {
 
 //форма
 
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include bsize(100%, 100%);
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+//Модальное окно - фон формы
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  min-width: 528px;
+  min-height: 581px;
+
+  box-shadow: $modal-box-shadow;
+  border-radius: 4px;
+  background-color: $primary-white-color;
+
+  > .bth {
+    position: absolute;
+    right: 0;
+    top: 0;
+    @include bsize(30px, 30px);
+    transform: translate(25%, -25%);
+
+    border-radius: 50%;
+    background-color: $primary-white-color;
+    border-color: transparent;
+    box-shadow: $modal-box-shadow;
+    cursor: pointer;
+  }
+}
+
+.icon-btn-close {
+  fill: black;
+}
+
+//Модальное окно - форма
+
 .input {
   padding: 12px 18px;
   @include bsize(358px, 50px);
@@ -258,4 +310,172 @@ body {
   color: $primary-white-color;
   background-color: $foot-primery-color;
   outline: none;
+}
+
+.form {
+  @include bsize(528px, 581px);
+  padding: 40px;
+}
+
+.form-about {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 30px;
+  text-align: center;
+  @include fontz(700, 20px, 1.15, 00.03em);
+  color: $title-text-color;
+}
+
+.form-field {
+  position: relative;
+  @include flex-mix(flex, center, center);
+  margin-bottom: 28px;
+  &.comments {
+    margin-bottom: 20px;
+  }
+}
+
+.form-input {
+  @include bsize(100%, 40px);
+
+  padding: 12px 8px 12px 42px;
+
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+
+  &:focus + .form-text {
+    color: $accent-text-color;
+    transform: translate(-90%, -150%);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  &:focus + .form-text.tel {
+    transform: translate(-50%, -150%);
+  }
+
+  &:focus + .form-text.mail {
+    transform: translate(-60%, -150%);
+  }
+
+  &:not(:placeholder-shown) + .form-text {
+    transform: translate(-90%, -150%);
+  }
+
+  &:not(:placeholder-shown) + .form-text.tel {
+    transform: translate(-50%, -150%);
+  }
+
+  &:not(:placeholder-shown) + .form-text.mail {
+    transform: translate(-60%, -150%);
+  }
+
+  &:focus-within ~ .icon-form {
+    fill: $accent-text-color;
+  }
+
+  &:focus {
+    border-color: $accent-text-color;
+    outline: none;
+  }
+  &.comments {
+    height: 120px;
+    padding-left: 16px;
+    resize: none;
+  }
+  &:focus + .form-text.comments {
+    transform: translateY(-150%);
+  }
+  &:not(:placeholder-shown) + .form-text.comments {
+    transform: translateY(-150%);
+  }
+}
+
+.form-text {
+  position: absolute;
+  top: 25%;
+  left: 42px;
+  @include fontz(400, 14px, 1.71, 0.01em);
+
+  &.comments {
+    top: 12px;
+    left: 16px;
+  }
+}
+
+.icon-form {
+  position: absolute;
+  top: 85%;
+  left: 16px;
+
+  transform: translateY(-125%);
+
+  display: inline-block;
+  color: black;
+}
+
+.consent {
+  @include flex-mix(flex, center, center);
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+//Прячем чекбокс от браузера
+
+.check-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+//Герой
+
+.section {
+  padding-top: 94px;
+  padding-bottom: 94px;
+  &.hero {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.hero {
+  text-align: center;
+  > .overley {
+    height: 600px;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+
+    background-color: #757575;
+    background-image: linear-gradient(
+        to right,
+        rgba(47, 48, 58, 0.8),
+        rgba(47, 48, 58, 0.8)
+      ),
+      url("../img/hero/hero-img.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.hero {
+  .button {
+    min-width: 200px;
+    padding: 10px 32px;
+    text-align: center;
+
+    text-decoration: none;
+    @include fontz(700, 16px, 1.88, 0.06em);
+
+    color: $primary-white-color;
+    background-color: $accent-text-color;
+    border-radius: 4px;
+    border-color: transparent;
+    cursor: pointer;
+  }
 }
