@@ -5,7 +5,16 @@ body {
 }
 
 .page-header {
-  @extend %container;
+  &.container {
+    @extend %container;
+  }
+  .list {
+    @extend %list;
+  }
+  .link {
+    @extend %link;
+  }
+
   display: flex;
   justify-content: space-between;
   background-color: $primary-white-color;
@@ -18,10 +27,6 @@ body {
     font-family: $font-logo;
     @include fontz(700, 26px, 1.19, 0.03em);
     text-decoration: none;
-  }
-  .logo-foot {
-    margin-bottom: 10px;
-    @include fontz(700, 22px, 1.18, 00.03em);
   }
 }
 
@@ -36,12 +41,10 @@ body {
 //навигация сайта
 
 .site-nav {
-  @extend %list;
-  @extend %link;
   display: flex;
   margin-left: 85px;
-  .item:not(:last-child) {
-    margin-right: 50px;
+  .item:nth-child(n + 1) {
+    margin-left: 50px;
   }
   .link.current {
     color: $accent-text-color;
@@ -81,8 +84,6 @@ body {
 }
 
 .cont-nav {
-  @extend %list;
-  @extend %link;
   margin-left: auto;
   @extend %flex;
   > .item.phone {
@@ -94,6 +95,11 @@ body {
     @include fontz(500, 14px, 1.14, 00.02em);
     color: $primery-text-color;
     @include tranzition(color);
+    &:hover,
+    &:focus {
+      color: $accent-text-color;
+      @include tranzition(color);
+    }
   }
   .mail-icon {
     @include bsize(16px, 11px);
@@ -112,9 +118,17 @@ body {
 //Футер
 
 .page-footer {
-  @extend %container;
-  @extend %link;
-  min-height: 253px;
+  .container {
+    @extend %container;
+  }
+  .link {
+    @extend %link;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .list {
+    @extend %list;
+  }
+
   background-color: $foot-primery-color;
   color: $primary-white-color;
   b {
@@ -134,12 +148,12 @@ body {
 }
 
 .logo-foot {
-  @extend %link;
   color: $primary-white-color;
   &.link {
     display: inline-block;
     margin-bottom: 10px;
   }
+  @include fontz(700, 22px, 1.18, 0.03em);
 }
 
 .address {
@@ -188,11 +202,60 @@ body {
   }
 }
 
-.foot-link .social {
-  .item {
-    margin-right: 10px;
-    &:nth-child(4n) {
-      margin-right: 0;
+.foot-link {
+  .social {
+    .item {
+      margin-right: 10px;
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
     }
   }
+  .link:hover,
+  .link:focus {
+    color: $accent-text-color;
+    @include tranzition(color);
+  }
+}
+
+.button {
+  &.primary {
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    min-width: 200px;
+    border-radius: 4px;
+    padding: 10px 32px;
+    cursor: pointer;
+
+    color: $primary-white-color;
+    background-color: $accent-text-color;
+
+    text-decoration: none;
+    @include fontz(700, 16px, 1.87, 0.06em);
+    outline: none;
+
+    &::after {
+      content: "";
+      @include bsize(24px, 24px);
+      margin-left: 10px;
+      background-image: url("../img/icon/icon-send.svg");
+      background-size: contain;
+    }
+  }
+}
+
+//форма
+
+.input {
+  padding: 12px 18px;
+  @include bsize(358px, 50px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+
+  color: $primary-white-color;
+  background-color: $foot-primery-color;
+  outline: none;
 }
