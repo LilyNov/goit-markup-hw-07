@@ -665,57 +665,80 @@ body {
   }
   .list {
     @extend %list;
-    display: flex;
-    justify-content: space-between;
   }
   .link {
     @extend %link;
-    @include flex-mix(flex, center, center);
-    @include bsize(44px, 44px);
-    border-radius: 50%;
-    color: $color-social-links;
   }
+  .section.team {
+    background-color: var(--color-bg-child);
+  }
+
+  .list {
+    display: flex;
+    justify-content: space-between;
+  }
+
   img {
-    display: block;
+    display: block; /* занимает местопо ширине родителя-блока, пропадает 4px снизу картинки */
     margin-bottom: 30px;
   }
-  .item {
-    &.cards {
-      background-color: var(--primary-white-color);
-      border-radius: 4px;
-      box-shadow: $modal-box-shadow;
-    }
+
+  .item.cards {
+    background-color: var(--primary-white-color);
+    border-radius: 4px;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
+      0px 1px 3px rgba(0, 0, 0, 0.12);
   }
+
   .team-title {
     margin-top: 0;
+
     margin-bottom: 10px;
-    @include fontz(500, 16px, 1.19, 10.03em);
-    color: $title-text-color;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.19;
+    letter-spacing: 0.03em;
+    color: var(--title-text-color);
     text-align: center;
   }
 
   .team-position {
     margin: 0;
     margin-bottom: 16px;
-    @include fontz(400, 16px, 1.19, 10.03em);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.19;
+    letter-spacing: 0.03em;
     text-align: center;
-    color: $primery-text-color;
+    color: var(--primery-text-color);
   }
-  .list {
-    &.icon {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
+
+  .list.icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
   }
-  .item {
-    &.social {
-      margin-right: 10px;
-      &:nth-child(4n) {
-        margin-right: 0;
-      }
-    }
+
+  .item.social {
+    margin-right: 10px;
   }
+
+  .item.social:nth-child(4n) {
+    margin-right: 0;
+  }
+
+  .link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+
+    color: var(--color-social-links);
+  }
+
   .social-icon {
     fill: currentColor;
   }
@@ -740,11 +763,10 @@ body {
     @include tranzition(color);
     &:hover,
     &:focus {
-      color: accent-text-color;
+      color: $accent-text-color;
       @include tranzition(color);
     }
   }
-
   .item {
     margin-right: 30px;
     width: calc((100% - 60px) / 6);
@@ -761,6 +783,7 @@ body {
       @include tranzition(border);
     }
   }
+
   .customer-icon {
     fill: currentColor;
     cursor: pointer;
