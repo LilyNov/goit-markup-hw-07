@@ -516,6 +516,15 @@ body {
 }
 
 .hero {
+  .hero-title {
+    margin-top: 0;
+    margin-bottom: 46px;
+    padding-top: 200px;
+    color: $primary-white-color;
+    text-transform: uppercase;
+    @include fontz(900, 44px, 1.36, 00.06em);
+  }
+
   .button {
     min-width: 200px;
     padding: 10px 32px;
@@ -528,6 +537,232 @@ body {
     background-color: $accent-text-color;
     border-radius: 4px;
     border-color: transparent;
+    cursor: pointer;
+  }
+}
+
+//Наши преимущества
+
+.section.advantage {
+  border: 1px solid #ececec;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden;
+}
+
+.advantage {
+  .container {
+    @extend %container;
+  }
+  .list {
+    @extend %list;
+    display: flex;
+  }
+  .item {
+    margin-right: 30px;
+    width: calc((100% - 90px) / 4);
+    &:nth-child(4n) {
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+  }
+  .background-icon {
+    @include flex-mix(flex, center, center);
+    @include bsize(270px, 120px);
+    margin-bottom: 30px;
+    background-color: #f5f4fa;
+  }
+}
+
+.antenna-icon {
+  @include bsize(65px, 70px);
+  align-items: center;
+}
+
+.section h2 {
+  margin-top: 0;
+  margin-bottom: 50px;
+  text-align: center;
+  @include fontz(700, 14px, 1.14, 00.03em);
+  color: $title-text-color;
+}
+
+.advantage-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  @include fontz(700, 14px, 1.14, 00.03em);
+  text-transform: uppercase;
+  color: var(--title-text-color);
+}
+
+.advantage p {
+  margin-top: 0;
+  margin-bottom: 0;
+  @include fontz(400, 14px, 1.71, 00.03em);
+}
+
+//Чем мы занимаемся
+
+.doing {
+  .container {
+    @extend %container;
+  }
+  .list {
+    @extend %list;
+    display: flex;
+  }
+  .link {
+    @extend %link;
+  }
+  .item {
+    position: relative;
+    margin-right: 30px;
+    width: calc((100% - 60px) / 3);
+    text-align: center;
+    &item:nth-child(3n) {
+      margin-right: 0;
+      margin-bottom: 0;
+    }
+  }
+  img {
+    display: block;
+  }
+  .doing-text {
+    position: absolute;
+    @include bsize(100%, 70px);
+    bottom: 0;
+    margin: 0;
+    padding: 27px;
+    background: rgba(47, 48, 58, 0.8);
+    border-radius: 0px 0px 4px 4px;
+    @include fontz(700, 14px, 1.14, 00.03em);
+    text-align: center;
+    text-transform: uppercase;
+
+    color: $primary-white-color;
+  }
+}
+
+//Наша команда
+
+.section {
+  &.team {
+    background-color: $color-bg-child;
+  }
+}
+
+.team {
+  .container {
+    @extend %container;
+  }
+  .list {
+    @extend %list;
+    display: flex;
+    justify-content: space-between;
+  }
+  .link {
+    @extend %link;
+    @include flex-mix(flex, center, center);
+    @include bsize(44px, 44px);
+    border-radius: 50%;
+    color: $color-social-links;
+  }
+  img {
+    display: block;
+    margin-bottom: 30px;
+  }
+  .item {
+    &.cards {
+      background-color: var(--primary-white-color);
+      border-radius: 4px;
+      box-shadow: $modal-box-shadow;
+    }
+  }
+  .team-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    @include fontz(500, 16px, 1.19, 10.03em);
+    color: $title-text-color;
+    text-align: center;
+  }
+
+  .team-position {
+    margin: 0;
+    margin-bottom: 16px;
+    @include fontz(400, 16px, 1.19, 10.03em);
+    text-align: center;
+    color: $primery-text-color;
+  }
+  .list {
+    &.icon {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+  }
+  .item {
+    &.social {
+      margin-right: 10px;
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+    }
+  }
+  .social-icon {
+    fill: currentColor;
+  }
+}
+
+//Постоянные клиенты
+
+.customer {
+  .container {
+    @extend %container;
+  }
+  .list {
+    @extend %list;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .link {
+    @extend %link;
+    @include flex-mix(flex, center, center);
+    @include bsize(170px, 90px);
+    color: var $color-social-links;
+    @include tranzition(color);
+    &:hover,
+    &:focus {
+      color: accent-text-color;
+      @include tranzition(color);
+    }
+  }
+
+  .item {
+    margin-right: 30px;
+    width: calc((100% - 60px) / 6);
+    border: 1px solid #afb1b8;
+    box-sizing: border-box;
+    border-radius: 4px;
+    @include tranzition(border);
+    &:nth-child(6n) {
+      margin-right: 0;
+    }
+    &:hover,
+    &:focus {
+      border: 1px solid $accent-text-color;
+      @include tranzition(border);
+    }
+  }
+  .customer-icon {
+    fill: currentColor;
     cursor: pointer;
   }
 }
