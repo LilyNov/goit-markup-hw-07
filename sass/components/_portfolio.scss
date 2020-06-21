@@ -25,8 +25,9 @@
     .box {
       position: relative;
     }
-    > .link {
+    .link {
       @extend %link;
+      color: $primery-text-color;
       display: block;
       &:focus .text-projects {
         opacity: 1;
@@ -104,6 +105,7 @@
   margin-bottom: 0px;
   padding-bottom: 20px; //для полного фокуса карточки задаю не margin-bottom а  padding-bottom: 20px
   padding-left: 24px;
+  color: $primery-text-color;
   @include fontz(400, 16px, 1.88, 0.03em);
 }
 
