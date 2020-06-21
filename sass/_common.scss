@@ -169,7 +169,8 @@ body {
       display: inline-block;
       margin-bottom: 9px;
     }
-    &:hover {
+    &:hover,
+    &:focus {
       color: $accent-text-color;
       @include tranzition(color);
     }
